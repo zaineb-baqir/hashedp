@@ -1,15 +1,15 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "7341bf49-d072-4337-9f74-b9fc9858bf23",
+  "id": "a4e4e3d8-3b75-42ac-96a8-b97fe9bf9cc2",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
-    "departments": {
-      "name": "departments",
+    "department": {
+      "name": "department",
       "columns": {
         "id": {
           "name": "id",
-          "type": "int",
+          "type": "serial",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
@@ -20,13 +20,20 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "sectionId": {
+          "name": "sectionId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "departments_id": {
-          "name": "departments_id",
+        "department_id": {
+          "name": "department_id",
           "columns": [
             "id"
           ]
@@ -35,12 +42,12 @@
       "uniqueConstraints": {},
       "checkConstraint": {}
     },
-    "employees": {
-      "name": "employees",
+    "employee": {
+      "name": "employee",
       "columns": {
         "id": {
           "name": "id",
-          "type": "int",
+          "type": "serial",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
@@ -54,38 +61,31 @@
         },
         "privilege": {
           "name": "privilege",
-          "type": "varchar(100)",
+          "type": "varchar(191)",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "autoincrement": false
         },
-        "section_id": {
-          "name": "section_id",
+        "sectionId": {
+          "name": "sectionId",
           "type": "int",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "department_id": {
-          "name": "department_id",
+        "departmentId": {
+          "name": "departmentId",
           "type": "int",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
-        },
-        "working_day_id": {
-          "name": "working_day_id",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": false,
           "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "employees_id": {
-          "name": "employees_id",
+        "employee_id": {
+          "name": "employee_id",
           "columns": [
             "id"
           ]
@@ -94,50 +94,36 @@
       "uniqueConstraints": {},
       "checkConstraint": {}
     },
-    "fingerprints": {
-      "name": "fingerprints",
+    "infosystem": {
+      "name": "infosystem",
       "columns": {
         "id": {
           "name": "id",
-          "type": "int",
+          "type": "serial",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
         },
-        "employee_id": {
-          "name": "employee_id",
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "userId": {
+          "name": "userId",
           "type": "int",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false
-        },
-        "date": {
-          "name": "date",
-          "type": "date",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "time_in": {
-          "name": "time_in",
-          "type": "time",
-          "primaryKey": false,
-          "notNull": false,
-          "autoincrement": false
-        },
-        "time_out": {
-          "name": "time_out",
-          "type": "time",
-          "primaryKey": false,
-          "notNull": false,
           "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "fingerprints_id": {
-          "name": "fingerprints_id",
+        "infosystem_id": {
+          "name": "infosystem_id",
           "columns": [
             "id"
           ]
@@ -146,12 +132,12 @@
       "uniqueConstraints": {},
       "checkConstraint": {}
     },
-    "sections": {
-      "name": "sections",
+    "section": {
+      "name": "section",
       "columns": {
         "id": {
           "name": "id",
-          "type": "int",
+          "type": "serial",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
@@ -167,8 +153,8 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "sections_id": {
-          "name": "sections_id",
+        "section_id": {
+          "name": "section_id",
           "columns": [
             "id"
           ]
@@ -177,32 +163,25 @@
       "uniqueConstraints": {},
       "checkConstraint": {}
     },
-    "time_allowances": {
-      "name": "time_allowances",
+    "timeallowenc": {
+      "name": "timeallowenc",
       "columns": {
         "id": {
           "name": "id",
-          "type": "int",
+          "type": "serial",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
         },
-        "employee_id": {
-          "name": "employee_id",
-          "type": "int",
-          "primaryKey": false,
-          "notNull": true,
-          "autoincrement": false
-        },
-        "start_time": {
-          "name": "start_time",
+        "startTime": {
+          "name": "startTime",
           "type": "time",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "end_time": {
-          "name": "end_time",
+        "endTime": {
+          "name": "endTime",
           "type": "time",
           "primaryKey": false,
           "notNull": true,
@@ -213,7 +192,8 @@
           "type": "varchar(100)",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false
+          "autoincrement": false,
+          "default": "''"
         },
         "reason": {
           "name": "reason",
@@ -222,20 +202,27 @@
           "notNull": false,
           "autoincrement": false
         },
-        "created_at": {
-          "name": "created_at",
+        "createdAt": {
+          "name": "createdAt",
           "type": "datetime",
           "primaryKey": false,
           "notNull": false,
           "autoincrement": false,
           "default": "CURRENT_TIMESTAMP"
+        },
+        "employeeId": {
+          "name": "employeeId",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
         }
       },
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "time_allowances_id": {
-          "name": "time_allowances_id",
+        "timeallowenc_id": {
+          "name": "timeallowenc_id",
           "columns": [
             "id"
           ]
@@ -249,7 +236,7 @@
       "columns": {
         "id": {
           "name": "id",
-          "type": "int",
+          "type": "serial",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
@@ -263,10 +250,18 @@
         },
         "password": {
           "name": "password",
-          "type": "varchar(255)",
+          "type": "varchar(191)",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "'user'"
         }
       },
       "indexes": {},
@@ -282,32 +277,32 @@
       "uniqueConstraints": {},
       "checkConstraint": {}
     },
-    "vacations": {
-      "name": "vacations",
+    "vacation": {
+      "name": "vacation",
       "columns": {
         "id": {
           "name": "id",
-          "type": "int",
+          "type": "serial",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
         },
-        "employee_id": {
-          "name": "employee_id",
+        "employeeId": {
+          "name": "employeeId",
           "type": "int",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "date_start": {
-          "name": "date_start",
+        "dateStart": {
+          "name": "dateStart",
           "type": "date",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "date_end": {
-          "name": "date_end",
+        "dateEnd": {
+          "name": "dateEnd",
           "type": "date",
           "primaryKey": false,
           "notNull": true,
@@ -318,7 +313,8 @@
           "type": "varchar(100)",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false
+          "autoincrement": false,
+          "default": "''"
         },
         "reason": {
           "name": "reason",
@@ -327,8 +323,8 @@
           "notNull": false,
           "autoincrement": false
         },
-        "created_at": {
-          "name": "created_at",
+        "createdAt": {
+          "name": "createdAt",
           "type": "datetime",
           "primaryKey": false,
           "notNull": false,
@@ -339,8 +335,8 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "vacations_id": {
-          "name": "vacations_id",
+        "vacation_id": {
+          "name": "vacation_id",
           "columns": [
             "id"
           ]
@@ -349,12 +345,12 @@
       "uniqueConstraints": {},
       "checkConstraint": {}
     },
-    "working_days": {
-      "name": "working_days",
+    "workingdays": {
+      "name": "workingdays",
       "columns": {
         "id": {
           "name": "id",
-          "type": "int",
+          "type": "serial",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": true
@@ -366,16 +362,23 @@
           "notNull": true,
           "autoincrement": false
         },
-        "start_shift": {
-          "name": "start_shift",
+        "startshift": {
+          "name": "startshift",
           "type": "time",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
         },
-        "end_shift": {
-          "name": "end_shift",
+        "endshift": {
+          "name": "endshift",
           "type": "time",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "employeeId": {
+          "name": "employeeId",
+          "type": "int",
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
@@ -384,8 +387,8 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "working_days_id": {
-          "name": "working_days_id",
+        "workingdays_id": {
+          "name": "workingdays_id",
           "columns": [
             "id"
           ]
